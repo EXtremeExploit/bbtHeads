@@ -1,0 +1,54 @@
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    name: Run tests
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+          cache: npm
+
+      - name: "Install"
+        run: npm install
+
+      - name: "Check tests"
+        run: node --run test
+  lint:
+          runs-on: ubuntu-latest
+          name: Run eslint
+          steps:
+            - uses: actions/checkout@v3
+              with:
+                fetch-depth: 1
+            - uses: actions/setup-node@v3
+              with:
+                node-version: '22.x'
+                cache: npm
+      
+            - name: "Install"
+              run: npm install
+      
+            - name: "Check eslint"
+              run: node --run lint
+  build: 
+          runs-on: ubuntu-latest
+          name: Build
+          steps:
+            - uses: actions/checkout@v3
+              with:
+                fetch-depth: 1
+            - uses: actions/setup-node@v3
+              with:
+                node-version: '22.x'
+                cache: npm
+      
+            - name: "Install"
+              run: npm install
+      
+            - name: "Build"
+              run: node --run build

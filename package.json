@@ -1,0 +1,45 @@
+{
+    "name": "bbtheads",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc -b && vite build",
+        "preview": "vite preview",
+        "test": "mocha",
+        "lint": "eslint .",
+        "minor": "npm version minor && git commit -S --amend --no-edit",
+        "patch": "npm version patch && git commit -S --amend --no-edit",
+        "major": "npm version major && git commit -S --amend --no-edit",
+        "updateProd": "git checkout master && git branch -f prod master && git checkout prod && git push --force && git checkout master"
+    },
+    "dependencies": {
+        "@eslint/eslintrc": "^3.3.1",
+        "@types/node": "^24.3.1",
+        "@vitejs/plugin-react": "^5.0.2",
+        "chai": "^6.0.1",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "tsx": "^4.20.5"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.33.0",
+        "@stylistic/eslint-plugin": "^4.2.0",
+        "@stylistic/eslint-plugin-ts": "^4.2.0",
+        "@types/chai": "^4.3.11",
+        "@types/mocha": "^10.0.6",
+        "@types/react": "^19.1.10",
+        "@types/react-dom": "^19.1.7",
+        "@typescript-eslint/eslint-plugin": "^8.26.0",
+        "eslint": "^9.33.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.20",
+        "globals": "^16.3.0",
+        "mocha": "^11.1.0",
+        "typescript": "~5.8.3",
+        "typescript-eslint": "^8.39.1",
+        "vite": "^7.1.2",
+        "vite-plugin-eslint": "^1.8.1"
+    }
+}

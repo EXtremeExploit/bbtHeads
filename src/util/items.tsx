@@ -407,7 +407,7 @@ function getHeadCount(player: PlayerItems, head: string) {
 }
 
 export function itemNameToImageName(name: string) {
-    return name.replace(/[ ?]/g, '_').replace(/#/g, '-');
+    return name.replace(/[ ?]/g, '_').replace(/#/g, '-').replace(/%/g, '%25');
 }
 
 

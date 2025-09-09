@@ -7,7 +7,7 @@ export interface SteamUserInventoryRequestError {
 
 export interface SteamUserInventoryRequestSuccess {
     success: true;
-    assets: Record<string, SteamUserInventoryAsset>;
+    assets: SteamUserInventoryAsset[];
     descriptions: SteamUserInventoryDescription[];
     rwgrsn: number;
     total_inventory_count: number;
@@ -53,7 +53,7 @@ export type HeadType = 'circle' | 'triangle' | 'square' | 'cylinder' | 'star';
 export type ItemList = Record<string, Item>;
 
 export interface Item {
-    id: string;
+    id: string[];
     name: string;
 }
 

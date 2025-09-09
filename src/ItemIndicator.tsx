@@ -25,7 +25,7 @@ export function ItemIndicator(props: {
         text = INDICATOR_FALSE;
     } else if (itemCount > 1) {
         bgClass = 'panel-multiple';
-        text = INDICATOR_TRUE;
+        text = INDICATOR_TRUE + `(${itemCount}x)`;
     }
 
     return <>

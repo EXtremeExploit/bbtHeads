@@ -1,5 +1,5 @@
-import { BACKEND_URL, INDICATOR_FALSE, INDICATOR_TRUE, ITEMS } from './constants';
-import type { Item, PlayerItems, SteamUserInventoryRequest } from './types';
+import { BACKEND_URL, ITEMS } from './constants';
+import type { PlayerItems, SteamUserInventoryRequest } from './types';
 
 export async function getItems(steamId: bigint) {
     const f = await fetch(`${BACKEND_URL}/getItems/${steamId}`);
@@ -410,8 +410,7 @@ export function parseItems(data: SteamUserInventoryRequest): PlayerItems {
     return player;
 }
 
-
-function getWeaponCount(player: PlayerItems, weaponIds: string[]) {
+export function getWeaponCount(player: PlayerItems, weaponIds: string[]) {
     let count = 0;
     for (const id of weaponIds) {
         count += player.weapons.get(id) || 0;
@@ -419,8 +418,7 @@ function getWeaponCount(player: PlayerItems, weaponIds: string[]) {
     return count;
 }
 
-
-function getHeadCount(player: PlayerItems, headIds: string[]) {
+export function getHeadCount(player: PlayerItems, headIds: string[]) {
     let count = 0;
     for (const id of headIds) {
         count += player.heads.get(id) || 0;
@@ -430,39 +428,4 @@ function getHeadCount(player: PlayerItems, headIds: string[]) {
 
 export function itemNameToImageName(name: string) {
     return name.replace(/[ ?]/g, '_').replace(/#/g, '-').replace(/%/g, '%25');
-}
-
-
-export function ItemIndicator(props: {
-    player: PlayerItems,
-    parentFolder: string,
-    type: 'weapon' | 'head',
-    item: Item
-}) {
-    let itemCount = 0;
-    if (props.type == 'weapon') {
-        itemCount = getWeaponCount(props.player, props.item.id);
-    } else if (props.type == 'head') {
-        itemCount = getHeadCount(props.player, props.item.id);
-    }
-
-    let bgClass = '';
-    let text = '';
-    if (itemCount == 1) {
-        bgClass = 'panel-true';
-        text = INDICATOR_TRUE;
-    } else if (itemCount == 0) {
-        bgClass = 'panel-false';
-        text = INDICATOR_FALSE;
-    } else if (itemCount > 1) {
-        bgClass = 'panel-multiple';
-        text = INDICATOR_TRUE;
-    }
-
-    return <>
-        <div className={'panel ' + bgClass}>
-            <img src={`/images/${props.parentFolder}/${itemNameToImageName(props.item.name)}.webp`} className="panel-img" alt={props.item.name} title={props.item.name}></img>
-            <p className="panel-text" title={props.item.name}>{text}</p>
-        </div>
-    </>;
 }

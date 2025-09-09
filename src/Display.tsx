@@ -1,6 +1,6 @@
 import { HeadsDisplay } from './HeadsDisplay';
 import { ITEMS } from './util/constants';
-import { ItemIndicator } from './util/items';
+import { ItemIndicator } from './ItemIndicator';
 import type { PlayerItems } from './util/types';
 
 function CurrencyItem(props: {
@@ -43,4 +43,3 @@ export function Display(props: {
         </div>
     </>;
 }
-

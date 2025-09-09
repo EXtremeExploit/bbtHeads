@@ -1,9 +1,9 @@
 import type { JSX } from 'react';
 import { ITEMS } from './util/constants';
 import type { HeadType, PlayerItems } from './util/types';
-import { ItemIndicator } from './util/items';
+import { ItemIndicator } from './ItemIndicator';
 
-export function DisplayHeadType(props: {
+function DisplayHeadType(props: {
     player: PlayerItems,
     type: HeadType
 }) {

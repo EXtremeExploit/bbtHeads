@@ -16,20 +16,22 @@ describe('Item list tests', () => {
     });
 
     it(`There shouldnt be duplicate ids`, () => {
-        const ids = Object.values(ITEMS).map((c) => c.id);
+        const ids = Object.values(ITEMS).map((c) => c.id).flat();
         const dupedIds = ids.filter((item, index) => ids.indexOf(item) !== index);
         assert(dupedIds.length == 0, `Item with dupe ids: ${dupedIds.map((n) => `"${n}" `)}`);
     });
 
     it('All items should have a valid id', () => {
         Object.values(ITEMS).forEach((c) => {
-            assert(c.id != '');
-            assert(c.id != '0');
-            assert(c.id != 'x');
-            assert(c.id != null);
-            assert(c.id != undefined);
-            assert(typeof c.id == 'string');
-            assert(BigInt(c.id).toString() === c.id);
+            c.id.forEach((id) => {
+                assert(id != '', `id for ${c.name} cannot be empty`);
+                assert(id != '0', `id for ${c.name} cannot be 0`);
+                assert(id != 'x', `id for ${c.name} cannot be x`);
+                assert(id != null, `id for ${c.name} cannot be null`);
+                assert(id != undefined, `id for ${c.name} cannot be undefined`);
+                assert(typeof id == 'string', `id for ${c.name} has to be a number`);
+                assert(BigInt(id).toString() === id, `id for ${c.name} has to be a number`);
+            });
         });
     });
 

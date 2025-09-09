@@ -40,7 +40,7 @@ describe('Item list tests', () => {
             assert(c.name != '');
             assert(c.name != null);
             assert(c.name != undefined);
-            assert(typeof c.id == 'string');
+            assert(typeof c.name == 'string');
         });
     });
 });

@@ -3,7 +3,7 @@ import { getItems, parseItems } from './util/items';
 import type { PlayerItems } from './util/types';
 import { Display } from './Display';
 import Meta from './Meta';
-import { TITLE, VERSION } from './util/constants';
+import { BUTTON_IDLE, BUTTON_LOADING, TITLE, VERSION } from './util/constants';
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
                     const parsedItems = parseItems(response);
                     setPlayerItems(parsedItems);
                     setIsLoading(false);
-                }}>{isLoading ? 'Loading...' : 'Check'}</button>
+                }}>{isLoading ? BUTTON_LOADING : BUTTON_IDLE}</button>
                 <br></br>
             </div>
             <Display player={playerItems} />

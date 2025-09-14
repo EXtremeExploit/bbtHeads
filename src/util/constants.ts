@@ -17,8 +17,10 @@ export const META_KEYWORDS = 'battleblock,theater,teather,battle,block,the,behem
 export const META_URL = 'https://bbt.pedro.moe';
 
 export const INDICATOR_TRUE = '✔️';
-
 export const INDICATOR_FALSE = '❌';
+
+export const BUTTON_IDLE = '🔍';
+export const BUTTON_LOADING = '⏳';
 
 export const ITEMS: ItemList = {
     GEM: { id: ['204827733'], name: 'Gems' },

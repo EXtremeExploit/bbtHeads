@@ -1,7 +1,24 @@
 import { BACKEND_URL, ITEMS } from './constants';
 import type { PlayerItems, SteamUserInventoryRequest } from './types';
 
-export async function getItems(steamId: bigint) {
+export function isSteamIdValid(id: string): boolean {
+    if (!id) return false;
+    if (id.length != 17) return false;
+
+    let bigintId = 0n;
+    try {
+        bigintId = BigInt(id);
+    } catch (_error) {
+        bigintId = 0n;
+    }
+    if (bigintId == 0n) return false;
+
+    if (bigintId.toString() !== id) return false;
+
+    return true;
+}
+
+async function getItems(steamId: bigint) {
     const f = await fetch(`${BACKEND_URL}/getItems/${steamId}`);
     if (f.status != 200) {
         alert(await f.text());
@@ -11,7 +28,7 @@ export async function getItems(steamId: bigint) {
     return result;
 }
 
-export function parseItems(data: SteamUserInventoryRequest): PlayerItems {
+function parseItems(data: SteamUserInventoryRequest): PlayerItems {
     const player: PlayerItems = {
         gems: 0,
         yarn: 0,
@@ -25,7 +42,7 @@ export function parseItems(data: SteamUserInventoryRequest): PlayerItems {
     }
 
     if (data.total_inventory_count != data.assets.length) {
-        console.warn(`Too many items, will only process ${data.assets.length}`);
+        console.warn(`Too many items, will only process ${data.assets.length}/${data.total_inventory_count}`);
         alert('WARNING: It seems you have too many items, only some will be processed, please open a new issue on github/tell me about this');
     }
 
@@ -39,7 +56,6 @@ export function parseItems(data: SteamUserInventoryRequest): PlayerItems {
 
     for (const [_key, asset] of Object.entries(data.assets)) {
         const id = asset.classid;
-
         const foundItem = Object.entries(ITEMS).find((c) => c[1].id.includes(id));
 
         if (!foundItem) {
@@ -428,4 +444,10 @@ export function getHeadCount(player: PlayerItems, headIds: string[]) {
 
 export function itemNameToImageName(name: string) {
     return name.replace(/[ ?]/g, '_').replace(/#/g, '-').replace(/%/g, '%25');
+}
+
+export async function loadInventory(steamId: string) {
+    const response = await getItems(BigInt(steamId));
+    const parsedItems = parseItems(response);
+    return parsedItems;
 }

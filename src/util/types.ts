@@ -1,11 +1,11 @@
 export type SteamUserInventoryRequest = SteamUserInventoryRequestError | SteamUserInventoryRequestSuccess | null;
 
-export interface SteamUserInventoryRequestError {
+interface SteamUserInventoryRequestError {
     success: false;
     Error: string;
 }
 
-export interface SteamUserInventoryRequestSuccess {
+interface SteamUserInventoryRequestSuccess {
     success: true;
     assets: SteamUserInventoryAsset[];
     descriptions: SteamUserInventoryDescription[];
@@ -14,7 +14,7 @@ export interface SteamUserInventoryRequestSuccess {
 }
 
 
-export interface SteamUserInventoryAsset {
+interface SteamUserInventoryAsset {
     amount: string;
     appid: number;
     assetid: string;
@@ -23,7 +23,7 @@ export interface SteamUserInventoryAsset {
     instanceid: string;
 }
 
-export interface SteamUserInventoryDescription {
+interface SteamUserInventoryDescription {
     appid: string;
     background_color: string;
     classid: string;
@@ -42,7 +42,7 @@ export interface SteamUserInventoryDescription {
     type: string;
 }
 
-export interface SteamUserInventoryDescriptions {
+interface SteamUserInventoryDescriptions {
     type: string;
     value: string;
     color: string;

@@ -1,6 +1,6 @@
 import { TITLE, META_TITLE, META_DESCRIPTION, META_KEYWORDS, META_URL } from './util/constants';
 
-function Meta() {
+export function Meta() {
     return (
         <>
             <title>{TITLE}</title>
@@ -22,5 +22,3 @@ function Meta() {
         </>
     );
 }
-
-export default Meta;

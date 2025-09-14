@@ -13,7 +13,7 @@ function DisplayHeadType(props: {
         const headItem = ITEMS[head];
         const parentFolder = `heads/${props.type}`;
         heads.push(
-            <ItemIndicator player={props.player} parentFolder={parentFolder} type="head" item={headItem}></ItemIndicator>
+            <ItemIndicator key={`${props.type}-${headItem.name}`} player={props.player} parentFolder={parentFolder} type="head" item={headItem}></ItemIndicator>
         );
     }
     return heads;
@@ -26,19 +26,19 @@ export function HeadsDisplay(props: {
     return <>
         <div>
             <div className="panel-block panel-heads">
-                <DisplayHeadType player={player} type="circle" ></DisplayHeadType>
+                <DisplayHeadType key="circle-heads" player={player} type="circle" ></DisplayHeadType>
             </div>
             <div className="panel-block panel-heads">
-                <DisplayHeadType player={player} type="triangle" ></DisplayHeadType>
+                <DisplayHeadType key="triangle-heads" player={player} type="triangle" ></DisplayHeadType>
             </div>
             <div className="panel-block panel-heads">
-                <DisplayHeadType player={player} type="square" ></DisplayHeadType>
+                <DisplayHeadType key="square-heads" player={player} type="square" ></DisplayHeadType>
             </div>
             <div className="panel-block panel-heads">
-                <DisplayHeadType player={player} type="cylinder" ></DisplayHeadType>
+                <DisplayHeadType key="cylinder-heads" player={player} type="cylinder" ></DisplayHeadType>
             </div>
             <div className="panel-block panel-heads">
-                <DisplayHeadType player={player} type="star" ></DisplayHeadType>
+                <DisplayHeadType key="star-heads" player={player} type="star" ></DisplayHeadType>
             </div>
         </div>
     </>;

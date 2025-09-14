@@ -1,7 +1,6 @@
 /* eslint-disable @stylistic/quotes */
 import { defineConfig } from 'eslint/config';
 import stylistic from "@stylistic/eslint-plugin";
-import stylisticTs from "@stylistic/eslint-plugin-ts";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import globals from "globals";
 import path from "node:path";
@@ -22,7 +21,6 @@ export default defineConfig([{
 }, ...compat.extends("plugin:@typescript-eslint/recommended"), {
     plugins: {
         "@stylistic": stylistic,
-        "@stylistic/ts": stylisticTs,
         "@typescript-eslint": typescriptEslint
     },
 
@@ -134,7 +132,7 @@ export default defineConfig([{
 
         "@stylistic/template-curly-spacing": ["error", "never"],
 
-        "@stylistic/ts/type-annotation-spacing": ["error", {
+        "@stylistic/type-annotation-spacing": ["error", {
             before: false,
             after: true,
 
@@ -155,7 +153,9 @@ export default defineConfig([{
             args: "after-used",
             ignoreRestSiblings: false,
             argsIgnorePattern: "^_",
-            destructuredArrayIgnorePattern: "^_"
+            caughtErrorsIgnorePattern: "^_",
+            destructuredArrayIgnorePattern: "^_",
+            varsIgnorePattern: "^_"
         }]
     }
 }]);

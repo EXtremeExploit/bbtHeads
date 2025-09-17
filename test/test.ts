@@ -16,7 +16,7 @@ describe('Item list tests', () => {
     });
 
     it(`There shouldnt be duplicate ids`, () => {
-        const ids = Object.values(ITEMS).map((c) => c.id).flat();
+        const ids = Object.values(ITEMS).map((c) => c.ids).flat();
         const dupedIds = ids.filter((item, index) => ids.indexOf(item) !== index);
         assert(dupedIds.length == 0, `Item with dupe ids: ${dupedIds.map((n) => `"${n}" `)}`);
     });

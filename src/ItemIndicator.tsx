@@ -1,19 +1,13 @@
 import { INDICATOR_FALSE, INDICATOR_TRUE } from './util/constants';
-import { getHeadCount, getWeaponCount, itemNameToImageName } from './util/items';
+import { getItemCount, itemNameToImageName } from './util/items';
 import { Item, PlayerItems } from './util/types';
 
 export function ItemIndicator(props: {
     player: PlayerItems,
     parentFolder: string,
-    type: 'weapon' | 'head',
     item: Item
 }) {
-    let itemCount = 0;
-    if (props.type == 'weapon') {
-        itemCount = getWeaponCount(props.player, props.item.id);
-    } else if (props.type == 'head') {
-        itemCount = getHeadCount(props.player, props.item.id);
-    }
+    const itemCount = getItemCount(props.player, props.item);
 
     let bgClass = '';
     let text = '';

@@ -24,19 +24,19 @@ export function Display(props: {
                 <CurrencyItem img="/images/YarnBall.webp" text={player.yarn.toString()} />
             </div>
             <div className="panel-block">
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.EXPLODING_DISC} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.GRENADE} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.BOOMERANG} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.DODGEBALL} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.FIREBALL} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.ICE_CANNON} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.FAN} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.VACUUM} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.DART_GUN} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.FORCEBALL} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.PAPER_AIRPLANE} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.FROG_BOMB} ></ItemIndicator>
-                <ItemIndicator player={player} parentFolder="weapons" type="weapon" item={ITEMS.ACID_BUBBLE} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.EXPLODING_DISC} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.GRENADE} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.BOOMERANG} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.DODGEBALL} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.FIREBALL} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.ICE_CANNON} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.FAN} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.VACUUM} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.DART_GUN} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.FORCEBALL} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.PAPER_AIRPLANE} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.FROG_BOMB} ></ItemIndicator>
+                <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.ACID_BUBBLE} ></ItemIndicator>
             </div>
             <br></br>
             <HeadsDisplay player={player} />

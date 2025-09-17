@@ -1,8 +1,10 @@
+import { HEADS_COUNT } from './constants';
+
 export type SteamUserInventoryRequest = SteamUserInventoryRequestError | SteamUserInventoryRequestSuccess | null;
 
 interface SteamUserInventoryRequestError {
     success: false;
-    Error: string;
+    Error: string; // i have no idea why this is locale uppercase
 }
 
 interface SteamUserInventoryRequestSuccess {
@@ -48,18 +50,17 @@ interface SteamUserInventoryDescriptions {
     color: string;
 }
 
-export type HeadType = 'circle' | 'triangle' | 'square' | 'cylinder' | 'star';
+export type HeadType = keyof typeof HEADS_COUNT;
 
 export type ItemList = Record<string, Item>;
 
 export interface Item {
-    id: string[];
+    ids: string[];
     name: string;
 }
 
 export interface PlayerItems {
     gems: number;
     yarn: number;
-    weapons: Map<string, number>;
-    heads: Map<string, number>;
+    items: Map<string, number>;
 }

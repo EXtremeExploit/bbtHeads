@@ -11,8 +11,7 @@ export function App() {
     const [playerItems, setPlayerItems] = useState<PlayerItems>({
         gems: 0,
         yarn: 0,
-        weapons: new Map(),
-        heads: new Map()
+        items: new Map()
     });
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -57,12 +56,12 @@ export function App() {
                         alert('invalid SteamID type, make sure its 17 characters long and starts with 7');
                         return;
                     }
+                    setIsLoading(true);
 
                     const winLoc = window.location;
                     const newurl = winLoc.protocol + '//' + winLoc.host + winLoc.pathname + `?steamId=${steamId.current}`;
                     window.history.pushState({ path: newurl }, '', newurl);
 
-                    setIsLoading(true);
                     const inventory = await loadInventory(steamId.current);
                     setPlayerItems(inventory);
                     setIsLoading(false);

@@ -23,7 +23,7 @@ describe('Item list tests', () => {
 
     it('All items should have a valid id', () => {
         Object.values(ITEMS).forEach((c) => {
-            c.id.forEach((id) => {
+            c.ids.forEach((id) => {
                 assert(id != '', `id for ${c.name} cannot be empty`);
                 assert(id != '0', `id for ${c.name} cannot be 0`);
                 assert(id != 'x', `id for ${c.name} cannot be x`);

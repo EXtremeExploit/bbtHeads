@@ -335,7 +335,7 @@ export const ITEMS: ItemList = {
     STAR_18: { ids: ['213635723'], name: 'Hooshmand the Wise' },
     STAR_19: { ids: ['213635736'], name: 'Cecil (Cooking Cat)' },
     STAR_20: { ids: ['213635744'], name: 'Stubby (Cupcake)' },
-    STAR_21: { ids: ['213635726'], name: 'Lava Lamp' },
+    STAR_21: { ids: ['213635726', '7702483044'], name: 'Lava Lamp' },
     STAR_22: { ids: ['213635754'], name: 'Hatzilla' },
     STAR_23: { ids: ['213635729'], name: 'Scuba Steve' },
     STAR_24: { ids: ['213635728'], name: 'Peeps' },

@@ -8,6 +8,7 @@ import { BUTTON_IDLE, BUTTON_LOADING, TITLE, VERSION } from './util/constants';
 
 export function App() {
     const steamId = useRef<string>('');
+    const queryParamHandled = useRef<boolean>(false);
     const [playerItems, setPlayerItems] = useState<PlayerItems>({
         gems: 0,
         yarn: 0,
@@ -17,6 +18,10 @@ export function App() {
 
     // For handling query params
     useEffect(() => {
+        if (queryParamHandled.current)
+            return;
+        queryParamHandled.current = true;
+
         (async () => {
             const urlSteamId = new URLSearchParams(document.location.search).get('steamId');
             if (!urlSteamId)

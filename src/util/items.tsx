@@ -8,14 +8,15 @@ export function isSteamIdValid(id: string): boolean {
     return (/^\d{17}$/).test(id);
 }
 
-async function getItems(steamId: bigint): Promise<SteamUserInventoryRequest> {
+interface GetItemsResult {
+    result: SteamUserInventoryRequest;
+    status: number;
+}
+
+async function getItems(steamId: bigint): Promise<GetItemsResult> {
     const f = await fetch(`${BACKEND_URL}/getItems/${steamId}`);
-    if (f.status != 200) {
-        alert(await f.text());
-        return null;
-    }
     const result = await f.json();
-    return result;
+    return { result: result, status: f.status };
 }
 
 function parseItems(data: SteamUserInventoryRequest): PlayerItems {
@@ -83,8 +84,17 @@ export function itemNameToImageName(name: string) {
     return name.replace(/[ ?]/g, '_').replace(/#/g, '-').replace(/%/g, '%25');
 }
 
-export async function loadInventory(steamId: string) {
+export async function loadInventory(steamId: string): Promise<PlayerItems> {
     const response = await getItems(BigInt(steamId));
-    const parsedItems = parseItems(response);
-    return parsedItems;
+    if (response.status != 200) {
+        alert(response.result);
+        return {
+            items: new Map(),
+            gems: 0,
+            yarn: 0
+        };
+    } else {
+        const parsedItems = parseItems(response.result);
+        return parsedItems;
+    }
 }

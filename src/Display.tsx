@@ -39,7 +39,7 @@ export function Display(props: {
                 <ItemIndicator player={player} parentFolder="weapons" item={ITEMS.ACID_BUBBLE} ></ItemIndicator>
             </div>
             <br></br>
-            <HeadsDisplay player={player} />
+            <HeadsDisplay key="heads-display" player={player} />
         </div>
     </>;
 }

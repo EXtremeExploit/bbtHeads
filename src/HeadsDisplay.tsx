@@ -26,7 +26,7 @@ export function HeadsDisplay(props: {
     return <>
         <div>
             {
-                (Object.keys(HEADS_COUNT) as HeadType[]).map((h) => <div className="panel-block panel-heads">
+                (Object.keys(HEADS_COUNT) as HeadType[]).map((h) => <div key={h + 'heads-div'} className="panel-block panel-heads">
                     <DisplayHeadType key={h + '-heads'} player={player} type={h} ></DisplayHeadType>
                 </div>
                 )
